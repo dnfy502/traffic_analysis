@@ -21,11 +21,12 @@ This project provides a cutting-edge solution for traffic analysis and 3D road m
 ## Overview
 
 The tool is designed to analyze traffic footage and generate accurate 3D representations of road scenes. By processing input from:
+
 - Single images
 - Dashcam footage
 - Traffic camera feeds
 
-the system extracts crucial metrics and scene details using a fine-tuned version of YOLOv11 and the latest depth estimation techniques. The outcome is a live, dynamic MongoDB database (humorously named `bingus bongus`) that stores detailed scene data for both traffic analytics and 3D simulation.
+The system extracts crucial metrics and scene details using a fine-tuned version of YOLOv11 and the latest depth estimation techniques. The outcome is a live, dynamic MongoDB database (`bingus bongus`) that stores detailed scene data for both traffic analytics and 3D simulation.
 
 ---
 
@@ -35,22 +36,21 @@ the system extracts crucial metrics and scene details using a fine-tuned version
   Supports single images, dashcam videos, and traffic camera footage.
 
 - **Advanced Object Detection:**  
-  Uses a fine-tuned YOLOv11n model, optimized on a dataset of 10,000 images from dashcams and traffic lights, to detect vehicles, pedestrians, and more with precise bounding boxes.
+  Uses a fine-tuned YOLOv11n model, optimized on a dataset of 10,000+ images from dashcams and traffic lights, to detect vehicles, pedestrians, and more with precise bounding boxes.
 
 - **Accurate Depth Estimation:**  
-  Integrates Depth Anything v2 to generate high-fidelity depth maps. Utilizes a robust triangulation method:
-  - Extracts the top two most confident (usually the closest) vehicle predictions.
-  - Uses their heights and pixel focal length to triangulate real-world distances.
-  - Linearly maps depth across the entire depth map for reliable predictions of all objects.
+  Integrates Depth Anything v2 to generate high-fidelity depth maps. Utilizes a robust triangulation method as mentioned below.
 
 - **3D Scene Recreation:**  
   Recreates real-world traffic scenes in the Gazebo simulation environment, enabling realistic virtual scenarios.
 
 - **Traffic Analytics:**  
   Computes important metrics like:
-  - Average number of cars per second
-  - Average distance between vehicles  
-  These metrics can assist lawmakers and road engineers in making data-driven decisions.
+  - **Unique Vehicle Count:** Count distinct vehicles across the entire video using their unique track ID.
+  - **Filtering by Distance:** Filter detections to include only vehicles within a specified distance (e.g., z < 20), focusing on near-field traffic.
+  - **Number of Cars per Frame:** Group detections by frame (timestamp) and count the number of cars in each frame. Apply a moving average to the raw car counts per frame to generate a smoothed trend line.
+  - **Average Pairwise Distance Between Cars per Frame:** Compute the average distance between all pairs of vehicles within each frame to assess vehicle clustering or dispersion.
+  - **Heatmap of Vehicle Positions:** Create a 2D histogram (heatmap) of the (x, y) positions of vehicles to visualize areas of high and low vehicle density.
 
 - **Real-Time Data Storage:**  
   All processed data is stored on a live MongoDB server, allowing seamless access for both traffic analysis and 3D simulation modules.
@@ -64,7 +64,7 @@ the system extracts crucial metrics and scene details using a fine-tuned version
    - **Frame Extraction:** Videos are split into frames at 3 frames per second (3fps), which provides sufficient data density for analysis without overloading the system.
 
 2. **Object Detection with YOLOv11:**  
-   - Each frame is processed using a fine-tuned YOLOv11n model that has been optimized on a specialized dataset for high precision in detecting vehicles and pedestrians.
+   - Each frame is processed using a fine-tuned YOLOv11n model.
   
 3. **Depth Estimation:**  
    - **Triangulation:** The top two most confident vehicle detections (typically the closest) are used to calculate their real distances using their bounding box heights and the pixel focal length.
@@ -72,15 +72,9 @@ the system extracts crucial metrics and scene details using a fine-tuned version
    - **Coordinate Calculation:** Real-world x and y coordinates are computed using homogenization formulas based on the depth data.
 
 4. **Data Storage and Utilization:**  
-   - All extracted data (3D coordinates, object counts, etc.) are stored in the MongoDB collection `bingus bongus`.
+   - All extracted data (3D coordinates, object counts, etc.) are stored in the MongoDB collection `bingus bongus` on Atlas.
    - **Traffic Analysis Module:** Utilizes stored data to calculate metrics like average vehicle counts and inter-vehicle distances.
    - **3D Simulation Module:** Uses real-world coordinates to accurately recreate the scene in Gazebo, aiding in realistic virtual simulations for self-driving model training.
-
----
-
-## Data Management
-
-The project uses a live MongoDB server to store all processed data, ensuring efficient and real-time access for both analytical and simulation purposes. The MongoDB collection is humorously named **`bingus bongus`**, reflecting the project’s playful yet innovative spirit.
 
 ---
 
@@ -150,6 +144,7 @@ The project uses a live MongoDB server to store all processed data, ensuring eff
 ## Contributing
 
 Contributions are welcome! Please follow these guidelines:
+
 - Fork the repository and create your branch from `main`.
 - Write clear and concise commit messages.
 - Ensure your code adheres to the project's coding standards.
@@ -168,3 +163,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 *Developed with passion by boga*
 
 Feel free to explore, contribute, and help improve traffic safety and simulation fidelity!
+
