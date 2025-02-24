@@ -143,7 +143,7 @@ The system extracts crucial metrics and scene details using a fine-tuned version
   Make a workspace and create a directory 'src' where modell package will be stored, copy this repo's modell to get the packages and then build the catkin workspace.
   
   cd ~/kh/src/
-  git clone https://github.com/Team-Deimos-IIT-Mandi/Robotic_Arm.git
+  git clone https://github.com/dnfy502/traffic_analysis.git
   cd ~/kh && catkin build
   
   Source your workspace in .bashrc file by running the following command so that you don't have to source it in every terminal
