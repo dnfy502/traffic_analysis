@@ -104,40 +104,39 @@ The system extracts crucial metrics and scene details using a fine-tuned version
   - **Inference Speed:** 290 FPS
   - **F1 Score:** 0.71 at confidence 0.61
   - **Precision-Recall Balance:** Demonstrates high accuracy for vehicles, with minor misclassifications in occluded scenarios.
-
+  - The remaining metrics can be accessed here: https://arxiv.org/html/2410.22898v1
 ---
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.7+
+- Python 3.10
+- Above Jupyter Notebooks
 - MongoDB server (ensure the collection `bingus bongus` is configured)
 - Gazebo for 3D simulation
-- Dependencies listed in `requirements.txt` (e.g., PyTorch, OpenCV, YOLOv11 dependencies)
 
 ### Installation
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/traffic-analysis-tool.git
-   cd traffic-analysis-tool
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
+   git clone https://github.com/dnfy502/traffic-analysis.git
    ```
 
 3. **Configure MongoDB:**
 
    Ensure your MongoDB instance is running and accessible. Update the configuration file with the correct connection string if necessary.
 
-4. **Run the application:**
+4. **Run the main CoordsCalc Jupyter Notebook (preferably in Google Colab):**
 
    ```bash
-   python main.py
+   CoordsCalc3.ipynb
+   ```
+5. **Upload your choice of video in Google Colab, edit the videofile variable and run the code.**
+6. **Run the Data Analysis Jupyter Notebook (preferably in Google Colab):**
+
+   ```bash
+   data-analysis.ipynb
    ```
 
