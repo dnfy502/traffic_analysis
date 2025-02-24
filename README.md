@@ -76,7 +76,9 @@ The system extracts crucial metrics and scene details using a fine-tuned version
 4. **Data Storage and Utilization:**  
    - All extracted data (3D coordinates, object counts, etc.) are stored in the MongoDB collection `bingus bongus` on Atlas.
    - **Traffic Analysis Module:** Utilizes stored data to calculate metrics like average vehicle counts and inter-vehicle distances.
-   - **3D Simulation Module:** Uses real-world coordinates to accurately recreate the scene in Gazebo, aiding in realistic virtual simulations for self-driving model training.
+5. **Gazebo Simulation**
+   - **Environment Recreation:** Using the coordinates obtained, the scenario can be reconstructed in Gazebo with high precision with stand-in car models
+   - **Environment Dynamics:** Utilizing the temporal nature of the data, the dynamics of the environment can also be tracked and reproduced in the simulation
 
 ---
 
