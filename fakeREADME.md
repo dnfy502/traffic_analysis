@@ -139,4 +139,27 @@ The system extracts crucial metrics and scene details using a fine-tuned version
    ```bash
    data-analysis.ipynb
    ```
+7. **Install ROS packages**
+  Make a workspace and create a directory 'src' where modell package will be stored, copy this repo's modell to get the packages and then build the catkin workspace.
+  
+  cd ~/kh/src/
+  git clone https://github.com/Team-Deimos-IIT-Mandi/Robotic_Arm.git
+  cd ~/kh && catkin build
+  
+  Source your workspace in .bashrc file by running the following command so that you don't have to source it in every terminal
+  
+  echo "source ~/robo_arm/devel/setup.bash" >> ~/.bashrc
+  
+
+8. **To start the Gazebo simulation:**
+  
+  ```bash
+  roslaunch gazebo_ros empty_world.launch
+  ```
+
+9. **To spawn the robots**
+  
+  ```bash
+  rosrun modell multi_box.py
+  ```
 
