@@ -2,6 +2,7 @@
 
 This project provides a cutting-edge solution for traffic analysis and 3D road model generation. It leverages state-of-the-art deep learning models to detect vehicles, pedestrians, and more from various inputs, and then uses the generated data to recreate real-world scenes in the Gazebo 3D simulation environment. This dual-purpose approach not only helps lawmakers and urban planners better understand road conditions but also produces high-quality simulated data for training self-driving (FSD) models.
 
+Demo video: https://youtu.be/yPgG6S0mtiw
 ---
 
 ## Table of Contents
