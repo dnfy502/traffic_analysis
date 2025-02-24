@@ -4,7 +4,7 @@ This project provides a cutting-edge solution for traffic analysis and 3D road m
 
 Demo video: https://youtu.be/yPgG6S0mtiw
 ---
-3D Model video: https://youtu.be/2RmpJdB2nf4
+3D Model video: https://youtu.be/ehsyqmSyr7A
 ---
 ## Table of Contents
 
