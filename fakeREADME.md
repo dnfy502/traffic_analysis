@@ -64,7 +64,7 @@ The system extracts crucial metrics and scene details using a fine-tuned version
    - **Frame Extraction:** Videos are split into frames at 3 frames per second (3fps), which provides sufficient data density for analysis without overloading the system.
 
 2. **Object Detection with YOLOv11:**  
-   - Each frame is processed using a fine-tuned YOLOv11n model.
+   - Each frame is processed using a fine-tuned YOLOv11n model with a confidence threshold of 0.5.
   
 3. **Depth Estimation:**  
    - **Triangulation:** The top two most confident vehicle detections (typically the closest) are used to calculate their real distances using their bounding box heights and the pixel focal length.
@@ -95,6 +95,15 @@ The system extracts crucial metrics and scene details using a fine-tuned version
 
 - **Depth Anything v2 Integration:**  
   Our depth estimation process leverages advanced triangulation techniques, providing superior performance compared to traditional monocular depth perception models. This ensures both high accuracy and efficient processing speeds.
+
+- **Performance Metrics:**  
+  Based on a benchmark study, YOLOv11 achieved:
+  - **mAP@0.5:** 76.8%
+  - **mAP@0.75:** 68.1%
+  - **mAP@[0.5:0.95]:** 48.5%
+  - **Inference Speed:** 290 FPS
+  - **F1 Score:** 0.71 at confidence 0.61
+  - **Precision-Recall Balance:** Demonstrates high accuracy for vehicles, with minor misclassifications in occluded scenarios.
 
 ---
 
@@ -131,36 +140,4 @@ The system extracts crucial metrics and scene details using a fine-tuned version
    ```bash
    python main.py
    ```
-
-### Uploading Data
-
-- **Single Image:**  
-  Use the provided interface to upload an image.
-- **Video Footage:**  
-  Upload your dashcam or traffic camera video. The system automatically extracts frames at 3fps for processing.
-
----
-
-## Contributing
-
-Contributions are welcome! Please follow these guidelines:
-
-- Fork the repository and create your branch from `main`.
-- Write clear and concise commit messages.
-- Ensure your code adheres to the project's coding standards.
-- Submit a pull request with a detailed description of your changes.
-
-For any issues or feature requests, please open an issue in the GitHub repository.
-
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-*Developed with passion by boga*
-
-Feel free to explore, contribute, and help improve traffic safety and simulation fidelity!
 
