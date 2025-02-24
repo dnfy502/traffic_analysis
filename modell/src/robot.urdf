@@ -118,7 +118,7 @@
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
-      <material name="black"/>
+      <material name="white"/>
     </visual>
     <collision>
       <geometry>
@@ -132,7 +132,7 @@
     </inertial>
   </link>
   <gazebo reference="caster_wheel">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/White</material>
     <mu1 value="0.01"/>
     <mu2 value="0.01"/>
   </gazebo>

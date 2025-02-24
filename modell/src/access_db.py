@@ -15,6 +15,15 @@ collection = db["bongus"]  # Change to your collection name
 
 # Fetch documents with a filter
 query = {"class": 2}  # Get all documents where age > 25
+# Fetch first 15 documents
+# documents = list(collection.find().limit(2))
+
+# Delete them one by one
+# for doc in documents:
+#     collection.delete_one({"_id": doc["_id"]})
+
+print("Deleted first 15 documents.")
+
 filtered_data = collection.find(query)
 if __name__=="__main__":
     for doc in filtered_data: 
